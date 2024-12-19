@@ -1,0 +1,191 @@
+body, h1, h2, ul, li, p, form, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e8f5e9, #a5d6a7);
+    color: #2e7d32;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1b5e20;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+form input[type="text"], form textarea {
+    padding: 10px;
+    border: 1px solid #a5d6a7;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+    transition: box-shadow 0.3s ease;
+}
+
+form input[type="text"]:focus, form textarea:focus {
+    box-shadow: 0 0 8px rgba(102, 187, 106, 0.5);
+    border-color: #4caf50;
+}
+
+form button {
+    background-color: #66bb6a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+form button:hover {
+    background-color: #4caf50;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+form button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.equation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.equation-list h2 {
+    color: #2e7d32;
+    font-size: 20px;
+}
+
+.equations {
+    list-style: none;
+    padding: 10px;
+    border: 1px solid #a5d6a7;
+    border-radius: 6px;
+    background: #ffffff;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.equations li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e0f2f1;
+    transition: background-color 0.3s ease;
+}
+
+.equations li:nth-child(odd) {
+    background-color: #f1f8e9;
+}
+
+.equations li:nth-child(even) {
+    background-color: #e8f5e9;
+}
+
+.equations li:hover {
+    background-color: #c8e6c9;
+}
+
+.equations li:last-child {
+    border-bottom: none;
+}
+
+.equations form {
+    display: flex;
+    gap: 5px;
+}
+
+.equations button {
+    background-color: #81c784;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.equations button:hover {
+    background-color: #4caf50;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.equations button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty State Message */
+.empty-message {
+    padding: 10px;
+    color: #757575;
+    text-align: center;
+    font-style: italic;
+    background-color: #f1f8e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 6px;
+}
+
+.result {
+    padding: 20px;
+    background: rgba(102, 187, 106, 0.2);
+    border: 1px solid #66bb6a;
+    border-radius: 6px;
+    color: #1b5e20;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #2e7d32;
+}
+
+.result p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.error {
+    color: #d32f2f;
+    font-weight: bold;
+}
