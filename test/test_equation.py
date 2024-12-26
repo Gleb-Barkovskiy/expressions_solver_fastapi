@@ -13,11 +13,13 @@ from core.models.equation import Equation
     "title, expression, expected_result",
     [
         ("Simple Addition", "3 + 5", 8.0),
+        ("Leading Zero", "-3 + 5", 2.0),
         ("Mixed Operations", "3 + 5 * 2", 13.0),
         ("Parentheses", "(1 + 2) * 3", 9.0),
         ("Comments Removed", "10 + 5 // this is a comment", 15.0),
         ("Complex Expression", "(1 + 2) * (3 - 1) / 2 + 10", 13.0),
-        ("Variables", "x = 5; y = 5; x + y", 10.0)
+        ("Variables", "x = 5; y = 5; x + y", 10.0),
+        ("Variables with multiple symbol names", "xy1 = 5; xy2 = 5; xy1 + xy2", 10.0),
     ],
 )
 def test_valid_equations(title, expression, expected_result):
@@ -39,6 +41,8 @@ def test_valid_equations(title, expression, expected_result):
         ("Invalid Variable Name", "1x = 10", InvalidVariable, "Invalid variable name"),
         ("Illogical Expression", "x = 5; x + * 2", IllogicalExpressionException, "Illogical expression structure"),
         ("Division by Zero", "x = 10 / (5 - 5); x", DivisionByZeroException, "Division by zero is not allowed."),
+        ("Invalid Variable Name with Number Prefix", "123var = 10", InvalidVariable, "Invalid variable name"),
+        ("Invalid Variable Name with $ sign", "v$ar = 10; v$ar", InvalidVariable, "Invalid variable name"),
     ],
 )
 def test_invalid_equations(title, expression, expected_exception, expected_message):

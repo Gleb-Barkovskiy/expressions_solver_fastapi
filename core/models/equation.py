@@ -44,7 +44,7 @@ class Equation:
     def _process_expression(self, expression: str, store_result: bool) -> float:
         if "=" in expression:
             var_name, expr = map(str.strip, expression.split("=", 1))
-            if not var_name.isidentifier():
+            if not var_name.isidentifier() or var_name[0].isdigit():
                 raise InvalidVariable(f"Invalid variable name: {var_name}")
             value = self._evaluate_expression(expr)
             self.variables[var_name] = value
@@ -94,9 +94,15 @@ class Equation:
                     i += 1
                 nums.append(float(expression[num_start:i + 1]))
 
+            elif char == '-' and (i == 0 or expression[i - 1] in precedence or expression[i - 1] == '('):
+                num_start = i + 1
+                while i + 1 < len(expression) and (expression[i + 1].isdigit() or expression[i + 1] == '.'):
+                    i += 1
+                nums.append(float('-' + expression[num_start:i + 1]))
+
             elif char.isidentifier():
                 var_start = i
-                while i + 1 < len(expression) and expression[i + 1].isidentifier():
+                while i + 1 < len(expression) and (expression[i + 1].isidentifier() or expression[i + 1].isdigit()):
                     i += 1
                 var_name = expression[var_start:i + 1]
                 if var_name not in self.variables:
